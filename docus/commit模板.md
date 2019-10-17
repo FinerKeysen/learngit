@@ -8,3 +8,7 @@ issue #?
 
 便于管理分析
 
+
+
+参考：[GIT提交规范的使用和总结](https://www.jianshu.com/p/1850c040271f?)
+
