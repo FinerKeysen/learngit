@@ -178,6 +178,16 @@ Body部分的格式是固定的，必须写成`This reverts commit <hash>.`，�
 
 然后，在项目目录里，运行下面的命令，使其支持 Angular 的 Commit message 格式。
 
+先执行
+
+> ```shell
+> $ commitizen init --yes
+> ```
+
+得到一个package.json文件
+
+然后再执行
+
 > ```bash
 > $ commitizen init cz-conventional-changelog --save --save-exact
 > ```
