@@ -178,19 +178,29 @@ Body部分的格式是固定的，必须写成`This reverts commit <hash>.`，�
 
 然后，在项目目录里，运行下面的命令，使其支持 Angular 的 Commit message 格式。
 
-先执行
+> ```bash
+> $ commitizen init cz-conventional-changelog --save --save-exact
+> ```
+
+但是注意， 因为`commitizen`工具是基于`Node.js`的，而我们的项目工程目录下一般是没有 `package.json` 文件，所以会报错 
+
+==npm WARN saveError ENOENT: no such file or directory, open '\XXX\package.json'==
+==npm notice created a lockfile as package-lock.json. You should commit this file.==
+==npm WARN enoent ENOENT: no such file or directory, open '\XXX\package.json'==
+
+ 对于此种错误，创建一个空的 package.json 文件
+
+```shell
+touch package.json
+```
+
+然后再执行
 
 > ```shell
 > $ commitizen init --yes
 > ```
 
-得到一个package.json文件
-
-然后再执行
-
-> ```bash
-> $ commitizen init cz-conventional-changelog --save --save-exact
-> ```
+会生成项目对应项目的 `package.json`，将项目目录下产生的 `package.json` 的内容写入到自己建的`package.json` .
 
 以后，凡是用到`git commit`命令，一律改为使用`git cz`。这时，就会出现选项，用来生成符合格式的 Commit message。
 
@@ -233,7 +243,7 @@ Body部分的格式是固定的，必须写成`This reverts commit <hash>.`，�
 [conventional-changelog](https://github.com/ajoslin/conventional-changelog) 就是生成 Change log 的工具，运行下面的命令即可。
 
 > ```bash
-> $ npm install -g conventional-changelog
+> $ npm install -g conventional-changelog # 全局安装，安装过就不需要重复执行了
 > $ cd my-project
 > $ conventional-changelog -p angular -i CHANGELOG.md -w
 > ```
