@@ -3,8 +3,12 @@
 ## 创建分支
 
 ```
-# 创建 dev 分支
+# 创建本地 dev 分支
 git branch dev
+
+# 创建远程 dev 分支
+# git push origin [local]:[remote]
+git push origin dev:remote-dev
 ```
 
 ## 切换分支
@@ -31,8 +35,15 @@ git merge dev
 ## 删除本地分支
 
 ```
-# 删除 dev 分支
+# 删除本地 dev 分支
 git branch -d dev
+
+# 删除远程分支
+# 方式1，git push origin [空的local]:[remote]
+git push origin :remote-dev
+
+# 方式2，git push origin --delete [remote]
+git push origin --delete remote-dev
 ```
 
 ## 查看分支列表
@@ -46,4 +57,3 @@ git branch -v
 # 查看当前分支
 git branch -vv
 ```
-
