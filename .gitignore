@@ -18,3 +18,4 @@ deploy_key_rsa
 # npm
 /node_modules/
 package-lock.json
+package.json
