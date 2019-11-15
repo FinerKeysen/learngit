@@ -170,37 +170,161 @@ Body部分的格式是固定的，必须写成`This reverts commit <hash>.`，�
 
 [Commitizen](https://github.com/commitizen/cz-cli)是一个撰写合格 Commit message 的工具。
 
-安装命令如下。
+### 方式A、使用 conventional-changelog 适配器
+
+步骤：
+
+（1）、先安装相关库
 
 > ```bash
-> $ npm install -g commitizen
+> # 全局安装 -g
+> $ npm install -g commitizen 
+> $ npm install -g conventional-changelog
+> $ npm install -g conventional-changelog-cli
+> 
+> # 查看已安装的全局库 
+> npm ls -g -depth=0
 > ```
 
-然后，在项目目录里，运行下面的命令，使其支持 Angular 的 Commit message 格式。
+如果不是 `Node `项目，在工程目录下是没有 `package.json` 文件的，所以此时需要先执行
+
+```
+$ npm init --yes
+```
+
+会生成项目对应项目的 `package.json`.
+
+然后，在项目目录下，运行下面的命令，使其支持 Angular 的 Commit message 格式。
 
 > ```bash
 > $ commitizen init cz-conventional-changelog --save --save-exact
 > ```
 
-但是注意， 因为`commitizen`工具是基于`Node.js`的，而我们的项目工程目录下一般是没有 `package.json` 文件，所以会报错 
+若没有 `package.json` 文件，执行上述命令时会报错 
 
-==npm WARN saveError ENOENT: no such file or directory, open '\XXX\package.json'==
-==npm notice created a lockfile as package-lock.json. You should commit this file.==
-==npm WARN enoent ENOENT: no such file or directory, open '\XXX\package.json'==
+<mark>npm WARN saveError ENOENT: no such file or directory, open '\XXX\package.json'</mark>  
+<mark>npm notice created a lockfile as package-lock.json. You should commit this file.</mark>  
+<mark>npm WARN enoent ENOENT: no such file or directory, open '\XXX\package.json'</mark>  
 
- 对于此种错误，创建一个空的 package.json 文件
 
-```shell
-touch package.json
-```
 
-然后再执行
+### 方式B、使用 git-cz 适配器
 
-> ```shell
-> $ commitizen init --yes
+步骤：
+
+（1）、先安装相关库
+
+> ```bash
+> # 全局安装 -g
+> $ npm install -g commitizen 
+> $ npm install -g git-cz
+> 
+> # 查看已安装的全局库 
+> npm ls -g -depth=0
 > ```
 
-会生成项目对应项目的 `package.json`，将项目目录下产生的 `package.json` 的内容写入到自己建的`package.json` .
+如果不是 `Node `项目，在工程目录下是没有 `package.json` 文件的，所以此时需要先执行
+
+```
+$ npm init --yes
+```
+
+会生成项目对应项目的 `package.json`.
+
+然后，在项目目录下，运行下面的命令，使其支持 Angular 的 Commit message 格式。
+
+> ```bash
+> $ commitizen init git-cz --save-dev --save-exact
+> ```
+
+用户自定义配置文件 `changelog.config.js` 放置在工程根目录下
+
+配置示例
+
+```
+module.exports = {
+  "disableEmoji": false,
+  "list": [
+    "test",
+    "feat",
+    "fix",
+    "chore",
+    "docs",
+    "refactor",
+    "style",
+    "ci",
+    "perf"
+  ],
+  "maxMessageLength": 64,
+  "minMessageLength": 3,
+  "questions": [
+    "type",
+    "scope",
+    "subject",
+    "body",
+    "breaking",
+    "issues",
+    "lerna"
+  ],
+  "scopes": [
+  "interface",
+  "settings",
+  ""
+  ],
+  "types": {
+    "chore": {
+      "description": "Build process or auxiliary tool changes",
+      "emoji": "🤖",
+      "value": "chore"
+    },
+    "ci": {
+      "description": "CI related changes",
+      "emoji": "🎡",
+      "value": "ci"
+    },
+    "docs": {
+      "description": "Documentation only changes",
+      "emoji": "✏️",
+      "value": "docs"
+    },
+    "feat": {
+      "description": "A new feature",
+      "emoji": "🎸",
+      "value": "feat"
+    },
+    "fix": {
+      "description": "A bug fix",
+      "emoji": "🐛",
+      "value": "fix"
+    },
+    "perf": {
+      "description": "A code change that improves performance",
+      "emoji": "⚡️",
+      "value": "perf"
+    },
+    "refactor": {
+      "description": "A code change that neither fixes a bug or adds a feature",
+      "emoji": "💡",
+      "value": "refactor"
+    },
+    "release": {
+      "description": "Create a release commit",
+      "emoji": "🏹",
+      "value": "release"
+    },
+    "style": {
+      "description": "Markup, white-space, formatting, missing semi-colons...",
+      "emoji": "💄",
+      "value": "style"
+    },
+    "test": {
+      "description": "Adding missing tests",
+      "emoji": "💍",
+      "value": "test"
+    }
+  }
+};
+```
 
 以后，凡是用到`git commit`命令，一律改为使用`git cz`。这时，就会出现选项，用来生成符合格式的 Commit message。
 
@@ -287,3 +411,9 @@ issue #issue_id
 ```
 
 
+
+[三、Commitizen]:
+
+[三、Commitizen]:
+
+[#三、Commitizen]:
