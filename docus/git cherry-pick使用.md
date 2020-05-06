@@ -1,6 +1,6 @@
 # git cherry-pick usage
 
-
+参考：
 
 **git cherry-pick**可以选择某一个分支中的一个或几个commit(s)来进行操作。
 
