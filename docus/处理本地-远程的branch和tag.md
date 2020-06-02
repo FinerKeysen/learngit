@@ -24,11 +24,9 @@ git fetch origin --prune
 git remote show origin
 ```
 
-![img](%E6%9B%B4%E6%96%B0%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF%E4%BF%A1%E6%81%AF.assets/18660577-998bf1400b218e34.webp)
+![img](%E5%A4%84%E7%90%86%E6%9C%AC%E5%9C%B0-%E8%BF%9C%E7%A8%8B%E7%9A%84branch%E5%92%8Ctag.assets/18660577-998bf1400b218e34-1591073329120.png)
 
 图片来源：https://www.jianshu.com/p/83acc1211742
-
-
 
 2、将仓库中已删除的分支与本地分支的追踪关系删除掉
 
@@ -41,7 +39,7 @@ git fetch --prune
 git fetch -p origin
 ```
 
-![img](%E6%9B%B4%E6%96%B0%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF%E4%BF%A1%E6%81%AF.assets/18660577-11d11d2438784092.webp)
+![img](%E5%A4%84%E7%90%86%E6%9C%AC%E5%9C%B0-%E8%BF%9C%E7%A8%8B%E7%9A%84branch%E5%92%8Ctag.assets/18660577-11d11d2438784092-1591073297208.png)
 
 图片来源：https://www.jianshu.com/p/83acc1211742
 
